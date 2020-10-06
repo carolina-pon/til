@@ -1,34 +1,18 @@
 class Brave
-  def initialize
-    @name = "テリー" 
-    @hp = 500
-    @offense = 150
-    @defense = 100
+  
+  attr_reader :name, :hp, :offense, :defense
 
-  end
+  attr_accessor :hp
 
-  #nameのゲッター
-  def name
-    @name
-  end
-
-  #hpのゲッター
-  def hp
-    @hp
-  end
-
-  #offenseのゲッター
-  def offense
-    @offense
-  end
-
-  #defenseのゲッター
-  def defense
-    @defense
+  def initialize(**params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:offense]
+    @defense = params[:defense]
   end
 end
 
-brave = Brave.new
+brave = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
 
 puts <<~TEXT
 NAME：#{brave.name}
@@ -36,3 +20,6 @@ HP：#{brave.hp}
 OFFENSE：#{brave.offense}
 DEFENSE：#{brave.defense}
 TEXT
+
+brave.hp -= 30
+puts " #{brave.hp} "
